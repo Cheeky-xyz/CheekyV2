@@ -30,13 +30,21 @@ const difficultyColors = {
 export const ScriptCard: React.FC<ScriptCardProps> = ({ script, onClick, className }) => {
   return (
     <Card 
-      className={cn("hover:bg-card/80 transition-colors cursor-pointer animate-fade-in", className)}
+      className={cn(
+        "hover:bg-card/80 transition-colors cursor-pointer animate-fade-in border-primary/20 bg-[#1B2A35]",
+        className
+      )}
       onClick={onClick}
     >
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
-          <span>{script.title}</span>
-          <Badge className={cn(difficultyColors[script.difficulty], "text-white")}>
+          <span className="text-primary">{script.title}</span>
+          <Badge 
+            className={cn(
+              difficultyColors[script.difficulty],
+              "text-white"
+            )}
+          >
             {script.difficulty}
           </Badge>
         </CardTitle>
@@ -45,7 +53,11 @@ export const ScriptCard: React.FC<ScriptCardProps> = ({ script, onClick, classNa
         <p className="text-secondary-foreground mb-4">{script.description}</p>
         <div className="flex flex-wrap gap-2">
           {script.tags.map((tag) => (
-            <Badge key={tag} variant="outline">
+            <Badge 
+              key={tag} 
+              variant="outline"
+              className="border-primary/50 text-primary"
+            >
               {tag}
             </Badge>
           ))}

@@ -25,26 +25,47 @@ export const ScriptDialog: React.FC<ScriptDialogProps> = ({ script, open, onOpen
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
-        <DialogHeader>
+      <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto bg-[#1B2A35] border-primary">
+        <DialogHeader className="space-y-4">
           <DialogTitle className="flex items-center justify-between">
-            <span>{script.title}</span>
-            <Button onClick={handleCopy} variant="outline" size="icon">
+            <span className="text-2xl font-bold text-primary">{script.title}</span>
+            <Button 
+              onClick={handleCopy} 
+              className="bg-primary hover:bg-primary/90 text-white gap-2"
+            >
               <Copy className="h-4 w-4" />
+              Copy Script
             </Button>
           </DialogTitle>
-        </DialogHeader>
-        <div className="space-y-4">
-          <p className="text-secondary-foreground">{script.description}</p>
-          <div className="flex flex-wrap gap-2">
-            {script.tags.map((tag) => (
-              <Badge key={tag} variant="outline">
-                {tag}
+          <div className="space-y-4">
+            <p className="text-secondary-foreground text-lg">{script.description}</p>
+            <div className="flex flex-wrap gap-2">
+              {script.tags.map((tag) => (
+                <Badge 
+                  key={tag} 
+                  variant="outline"
+                  className="border-primary/50 text-primary"
+                >
+                  {tag}
+                </Badge>
+              ))}
+              <Badge 
+                className={cn(
+                  "ml-auto",
+                  script.difficulty === "Easy" && "bg-green-500",
+                  script.difficulty === "Medium" && "bg-yellow-500",
+                  script.difficulty === "Hard" && "bg-red-500",
+                  script.difficulty === "Extreme" && "bg-purple-500",
+                )}
+              >
+                {script.difficulty}
               </Badge>
-            ))}
+            </div>
           </div>
-          <pre className="bg-secondary p-4 rounded-lg overflow-x-auto">
-            <code className="text-sm text-white">{script.code}</code>
+        </DialogHeader>
+        <div className="mt-4">
+          <pre className="bg-[#0F1923] p-6 rounded-lg overflow-x-auto border border-primary/20">
+            <code className="text-sm text-white font-mono">{script.code}</code>
           </pre>
         </div>
       </DialogContent>
