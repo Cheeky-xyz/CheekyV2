@@ -7,6 +7,7 @@ export const movementScripts: Script[] = [
     description: "A sophisticated movement system with double jumping, wall running, and sliding mechanics.",
     difficulty: "Hard",
     tags: ["PlayerMovement", "Physics", "Character"],
+    type: "movement",
     code: `// ... keep existing code (Advanced Player Movement System script)`
   },
   {
@@ -15,6 +16,7 @@ export const movementScripts: Script[] = [
     description: "Complete parkour system with wall climbing, ledge grabbing, and vaulting mechanics.",
     difficulty: "Extreme",
     tags: ["Parkour", "Physics", "Character"],
+    type: "movement",
     code: `local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 
@@ -131,6 +133,7 @@ end`
     description: "Realistic vehicle physics with suspension, engine forces, and drift mechanics.",
     difficulty: "Extreme",
     tags: ["Vehicles", "Physics", "Racing"],
+    type: "movement",
     code: `local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 

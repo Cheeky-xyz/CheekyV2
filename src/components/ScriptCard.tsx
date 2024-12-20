@@ -30,7 +30,7 @@ const difficultyColors = {
   Extreme: "bg-purple-500",
 };
 
-const scriptIcons = {
+export const scriptIcons = {
   movement: ArrowRight,
   combat: Sword,
   utility: Cog,

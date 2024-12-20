@@ -7,6 +7,7 @@ export const combatScripts: Script[] = [
     description: "Create intelligent NPCs with combat abilities, pathfinding, and dynamic behavior patterns.",
     difficulty: "Extreme",
     tags: ["AI", "Combat", "NPCs"],
+    type: "combat",
     code: `// ... keep existing code (Advanced AI Combat System script)`
   },
   {
@@ -15,6 +16,7 @@ export const combatScripts: Script[] = [
     description: "Complete weapon system with recoil, bullet spread, and damage falloff.",
     difficulty: "Hard",
     tags: ["Combat", "Weapons", "FPS"],
+    type: "combat",
     code: `local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
