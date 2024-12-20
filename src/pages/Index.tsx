@@ -54,8 +54,7 @@ const Index = () => {
               Roblox Script Hub
             </h1>
             <p className="text-secondary-foreground text-lg max-w-2xl mx-auto px-4 animate-fade-in">
-              Discover advanced Roblox scripts for your games. From complex movement systems to
-              dynamic weather effects, find the perfect script for your needs.
+              Made By a Roblox Developer for Other Roblox Developers
             </p>
             <div className="flex gap-4 justify-center mt-6">
               <Button
