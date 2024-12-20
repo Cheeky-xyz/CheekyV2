@@ -1,10 +1,10 @@
 import React from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Copy } from "lucide-react";
+import { Copy, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
-import { Script } from "./ScriptCard";
+import { Script, scriptIcons } from "./ScriptCard";
 import { cn } from "@/lib/utils";
 
 interface ScriptDialogProps {
@@ -23,15 +23,29 @@ export const ScriptDialog: React.FC<ScriptDialogProps> = ({ script, open, onOpen
 
   if (!script) return null;
 
+  const Icon = scriptIcons[script.type];
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto bg-[#1B2A35] border-primary">
-        <DialogHeader className="space-y-4">
-          <DialogTitle className="flex items-center justify-between">
-            <span className="text-2xl font-bold text-primary">{script.title}</span>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="absolute right-4 top-4 hover:bg-destructive/20 text-destructive"
+          onClick={() => onOpenChange(false)}
+        >
+          <X className="h-6 w-6" />
+        </Button>
+        
+        <DialogHeader className="space-y-4 pr-8">
+          <DialogTitle className="flex items-center gap-4">
+            <div className="flex items-center gap-2 flex-1">
+              <Icon className="h-6 w-6 text-primary" />
+              <span className="text-2xl font-bold text-primary">{script.title}</span>
+            </div>
             <Button 
               onClick={handleCopy} 
-              className="bg-primary hover:bg-primary/90 text-white gap-2"
+              className="bg-primary hover:bg-primary/90 text-white gap-2 ml-auto"
             >
               <Copy className="h-4 w-4" />
               Copy Script

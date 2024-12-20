@@ -2,8 +2,10 @@ import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { Bolt, Shield, Sword, ArrowRight, Cog } from "lucide-react";
 
 export type Difficulty = "Easy" | "Medium" | "Hard" | "Extreme";
+export type ScriptType = "movement" | "combat" | "utility" | "power" | "protection";
 
 export interface Script {
   id: string;
@@ -12,6 +14,7 @@ export interface Script {
   difficulty: Difficulty;
   tags: string[];
   code: string;
+  type: ScriptType;
 }
 
 interface ScriptCardProps {
@@ -27,7 +30,17 @@ const difficultyColors = {
   Extreme: "bg-purple-500",
 };
 
+const scriptIcons = {
+  movement: ArrowRight,
+  combat: Sword,
+  utility: Cog,
+  power: Bolt,
+  protection: Shield,
+};
+
 export const ScriptCard: React.FC<ScriptCardProps> = ({ script, onClick, className }) => {
+  const Icon = scriptIcons[script.type];
+  
   return (
     <Card 
       className={cn(
@@ -38,7 +51,10 @@ export const ScriptCard: React.FC<ScriptCardProps> = ({ script, onClick, classNa
     >
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
-          <span className="text-primary">{script.title}</span>
+          <div className="flex items-center gap-2">
+            <Icon className="h-5 w-5 text-primary" />
+            <span className="text-primary">{script.title}</span>
+          </div>
           <Badge 
             className={cn(
               difficultyColors[script.difficulty],
