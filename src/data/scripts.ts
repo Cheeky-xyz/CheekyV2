@@ -5,10 +5,19 @@ import { combatScripts } from "./script-categories/combat";
 import { uiScripts } from "./script-categories/ui";
 import { beginnerScripts } from "./script-categories/beginner";
 
+// Helper function to sort scripts by difficulty
+const difficultyOrder = {
+  Easy: 0,
+  Medium: 1,
+  Hard: 2,
+  Extreme: 3
+};
+
+// Combine all scripts and sort them by difficulty
 export const scripts: Script[] = [
   ...beginnerScripts,
   ...movementScripts,
   ...environmentScripts,
   ...combatScripts,
   ...uiScripts
-];
+].sort((a, b) => difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty]);
