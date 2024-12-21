@@ -110,5 +110,61 @@ teleporter.Touched:Connect(function(hit)
         rootPart.CFrame = destination.CFrame + Vector3.new(0, 3, 0)
     end
 end)`
+  },
+  {
+    id: "beginner-5",
+    title: "Simple Checkpoint",
+    description: "Creates a checkpoint system that saves player's position when touched.",
+    difficulty: "Easy",
+    tags: ["Beginner", "Checkpoint", "Touch"],
+    type: "utility",
+    code: `local checkpoint = script.Parent
+
+local function setSpawnPoint(player, position)
+    local leaderstats = player:FindFirstChild("leaderstats")
+    if leaderstats then
+        local spawnPoint = leaderstats:FindFirstChild("SpawnPoint")
+        if spawnPoint then
+            spawnPoint.Value = position
+        end
+    end
+end
+
+checkpoint.Touched:Connect(function(hit)
+    local player = game.Players:GetPlayerFromCharacter(hit.Parent)
+    if player then
+        setSpawnPoint(player, checkpoint.Position)
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "Checkpoint",
+            Text = "Checkpoint saved!",
+            Duration = 2
+        })
+    end
+end)`
+  },
+  {
+    id: "beginner-6",
+    title: "Speed Boost Pad",
+    description: "Creates a pad that temporarily increases player's speed when touched.",
+    difficulty: "Easy",
+    tags: ["Beginner", "Speed", "Touch"],
+    type: "utility",
+    code: `local speedPad = script.Parent
+local SPEED_MULTIPLIER = 2
+local DURATION = 3
+
+speedPad.Touched:Connect(function(hit)
+    local humanoid = hit.Parent:FindFirstChild("Humanoid")
+    if humanoid then
+        local originalSpeed = humanoid.WalkSpeed
+        humanoid.WalkSpeed = originalSpeed * SPEED_MULTIPLIER
+        
+        wait(DURATION)
+        
+        if humanoid then
+            humanoid.WalkSpeed = originalSpeed
+        end
+    end
+end)`
   }
 ];

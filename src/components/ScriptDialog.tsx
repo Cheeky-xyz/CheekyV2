@@ -28,28 +28,29 @@ export const ScriptDialog: React.FC<ScriptDialogProps> = ({ script, open, onOpen
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto bg-[#1B2A35] border-primary">
-        <Button
-          variant="ghost"
-          size="icon"
-          className="absolute right-4 top-4 hover:bg-destructive/20 text-destructive"
-          onClick={() => onOpenChange(false)}
-        >
-          <X className="h-6 w-6" />
-        </Button>
-        
-        <DialogHeader className="space-y-4 pr-8">
+        <DialogHeader className="space-y-4">
           <DialogTitle className="flex items-center gap-4">
             <div className="flex items-center gap-2 flex-1">
               <Icon className="h-6 w-6 text-primary" />
               <span className="text-2xl font-bold text-primary">{script.title}</span>
             </div>
-            <Button 
-              onClick={handleCopy} 
-              className="bg-primary hover:bg-primary/90 text-white gap-2 ml-auto"
-            >
-              <Copy className="h-4 w-4" />
-              Copy Script
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button 
+                onClick={handleCopy} 
+                className="bg-primary hover:bg-primary/90 text-white gap-2"
+              >
+                <Copy className="h-4 w-4" />
+                Copy Script
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:bg-destructive/20 text-destructive"
+                onClick={() => onOpenChange(false)}
+              >
+                <X className="h-6 w-6" />
+              </Button>
+            </div>
           </DialogTitle>
           <div className="space-y-4">
             <p className="text-secondary-foreground text-lg">{script.description}</p>
