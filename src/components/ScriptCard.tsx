@@ -44,7 +44,9 @@ export const ScriptCard: React.FC<ScriptCardProps> = ({ script, onClick, classNa
   return (
     <Card 
       className={cn(
-        "hover:bg-card/80 transition-colors cursor-pointer animate-fade-in border-primary/20 bg-[#1B2A35]",
+        "group transition-all duration-300 cursor-pointer animate-fade-in border-primary/20 bg-[#1B2A35]",
+        "hover:bg-primary/10 hover:border-primary hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1",
+        "active:scale-95",
         className
       )}
       onClick={onClick}
@@ -52,13 +54,13 @@ export const ScriptCard: React.FC<ScriptCardProps> = ({ script, onClick, classNa
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Icon className="h-5 w-5 text-primary" />
-            <span className="text-primary">{script.title}</span>
+            <Icon className="h-5 w-5 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" />
+            <span className="text-primary transition-colors duration-300 group-hover:text-primary/80">{script.title}</span>
           </div>
           <Badge 
             className={cn(
               difficultyColors[script.difficulty],
-              "text-white"
+              "text-white transition-transform duration-300 group-hover:scale-105"
             )}
           >
             {script.difficulty}
@@ -66,13 +68,13 @@ export const ScriptCard: React.FC<ScriptCardProps> = ({ script, onClick, classNa
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-secondary-foreground mb-4">{script.description}</p>
+        <p className="text-secondary-foreground mb-4 transition-colors duration-300 group-hover:text-foreground">{script.description}</p>
         <div className="flex flex-wrap gap-2">
           {script.tags.map((tag) => (
             <Badge 
               key={tag} 
               variant="outline"
-              className="border-primary/50 text-primary"
+              className="border-primary/50 text-primary transition-all duration-300 group-hover:border-primary group-hover:bg-primary/5"
             >
               {tag}
             </Badge>
