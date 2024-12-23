@@ -4,6 +4,7 @@ import { environmentScripts } from "./script-categories/environment";
 import { combatScripts } from "./script-categories/combat";
 import { uiScripts } from "./script-categories/ui";
 import { beginnerScripts } from "./script-categories/beginner";
+import { adminScripts } from "./script-categories/admin";
 
 // Helper function to sort scripts by difficulty
 const difficultyOrder = {
@@ -16,6 +17,7 @@ const difficultyOrder = {
 // Combine all scripts and sort them by difficulty
 export const scripts: Script[] = [
   ...beginnerScripts,
+  ...adminScripts,
   ...movementScripts,
   ...environmentScripts,
   ...combatScripts,
